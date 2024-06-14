@@ -7,7 +7,7 @@ def post_new_order():
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER_PATH,
            json=data.order_body)
 
-
 def get_order_info(track_number):
-    return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_INFO,
-           params={"t": track_number})
+    get_order_url = f"{configuration.URL_SERVICE} + {configuration.GET_ORDER_INFO} + '?t=' + {track_number}"
+    response = requests.get(get_order_url)
+    return response
